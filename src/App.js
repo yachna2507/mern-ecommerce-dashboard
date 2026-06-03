@@ -13,8 +13,7 @@ import React, { useEffect, useState } from
   import Register from "./Register";
 import "./App.css";
 import OrderCard from "./OrderCard";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 
 
 function App() {
@@ -87,8 +86,7 @@ return (
     />
   </Routes>
 
-  <ToastContainer />
-  </>
+
   
 );
 
