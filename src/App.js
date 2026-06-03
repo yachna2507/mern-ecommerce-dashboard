@@ -20,7 +20,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn]= useState(localStorage.getItem("isLoggedIn") || false
 );
   const [showSignup, setShowSignup] = useState(false);
-  const [loading, setLoading] = useState(false);
+  
 
   const [orders, setOrders] =
     useState([]);
@@ -30,7 +30,7 @@ function App() {
   const fetchOrders = async () => {
     
     const response = await
-    fetch('http://localhost:5000/orders');
+    fetch('https://mern-ecommerce-dashboard-1.onrender.com/orders');
     const data = await response.json();
       
       setOrders(data);
@@ -51,7 +51,7 @@ function App() {
 
 return (
   
-  <>
+  
   
   
   
