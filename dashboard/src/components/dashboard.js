@@ -61,7 +61,7 @@ console.log(response.data);
       };
     try {
       await 
-      axios.post("http://localhost:5000/orders", orderData);
+      axios.post("https://mern-ecommerce-dashboard-1.onrender.com/orders", orderData);
       fetchOrders();
       toast.success("Order Added Successfully");
       setCustomerName();
@@ -82,7 +82,7 @@ if (!confirmDelete) {
 
 }
   await
-    axios.delete (`http://localhost:5000/orders/${id}`);
+    axios.delete (`https://mern-ecommerce-dashboard-1.onrender.com/orders/${id}`);
 
   fetchOrders();
   toast.error("Order Deleted");
@@ -121,7 +121,7 @@ const updateOrder = async (id) => {
 
   await 
   
-axios.put(`http://localhost:5000/orders/${editId}`, orderData);
+axios.put(`https://mern-ecommerce-dashboard-1.onrender.com/orders/${editId}`, orderData);
   fetchOrders();
   toast.success("Order Updated");
   } catch (error) {
@@ -150,7 +150,7 @@ axios.put(`http://localhost:5000/orders/${editId}`, orderData);
 
 
 useEffect(() => {
-axios.get(`http://localhost:5000/orders?page=${page}&limit=5`)
+axios.get(`https://mern-ecommerce-dashboard-1.onrender.com/orders?page=${page}&limit=5`)
 .then((res) => {
 
   setOrders(res.data.orders || []);
