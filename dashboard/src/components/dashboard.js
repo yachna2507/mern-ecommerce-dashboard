@@ -83,7 +83,7 @@ if (!confirmDelete) {
 
 }
   await
-    axios.delete (`${process.env.REACT_APP_API_URL}/orders/${id}`);
+    axios.delete (`https://mern-ecommerce-dashboard-1.onrender.com/orders/${id}`);
 
   fetchOrders();
   toast.error("Order Deleted");
