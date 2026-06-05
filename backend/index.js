@@ -20,7 +20,7 @@ app.get("/dashboard", protect, (req, res) => {
         });
 
         //DB connect
-        mongoose.connect("mongodb://localhost:27017/authDB")
+        mongoose.connect(process.env.MONGO_URI)
         .then(() => console.log("MongoDB conected"))
         .catch((err) => console.log(err));
         app.post("/orders", async (req, res) =>
