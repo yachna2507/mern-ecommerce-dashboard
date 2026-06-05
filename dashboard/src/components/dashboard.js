@@ -61,6 +61,8 @@ console.log(response.data);
       };
     try {
       await 
+       console.log("ENV URL:", process.env.REACT_APP_API_URL)
+     console.log("FULL URL:", `${process.env.REACT_APP_API_URL}/orders`)
       axios.post(`${process.env.REACT_APP_API_URL}/orders`, orderData);
       fetchOrders();
       toast.success("Order Added Successfully");
