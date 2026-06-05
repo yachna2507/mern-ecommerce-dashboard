@@ -1,72 +1,40 @@
-import React, { useEffect, useState } from
-  'react';
-  import {
-    Routes,
-    route,
-    Navigate,
-    Route
-  } from "react-router-dom";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from  'react';
+
   import ProtectedRoute from './ProtectedRoute';
   import Dashboard from './Dashboard';
   import Login from './Login';
-
-  import Register from "./Register";
+ import Register from "./Register";
 import "./App.css";
-import OrderCard from "./OrderCard";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-
 function App() {
+
   const [isLoggedIn, setIsLoggedIn]= useState(localStorage.getItem("isLoggedIn") || false
 );
   const [showSignup, setShowSignup] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const [orders, setOrders] =
-    useState([]);
+  const [, setOrders] = useState([]);
   
-   
-  //fetch Orders
+   //fetch Orders
   const fetchOrders = async () => {
     
     const response = await
-    fetch('http://localhost:5000/orders');
+    fetch('https://mern-ecommerce-dashboard-1.onrender.com/orders');
     const data = await response.json();
       
       setOrders(data);
-    
-  
-    
-};
+    };
   useEffect(() => {
     fetchOrders();
-    
-  },
-    []);
-
-  
-
-
-
-
-return (
-  
-  <>
-  
-  
-  
+    }, []);
+    return (
   
   <Routes>
-    <Route path="/login"
-    element = {
+    <Route path="/login" element = {
       <Login
       setIsLoggedIn={setIsLoggedIn}
       />
     }
     />
-
-    <Route
+<Route
     path="/Dashboard"
     element= {
       <ProtectedRoute>
@@ -86,11 +54,7 @@ return (
      element={<Navigate to="/login" />}
     />
   </Routes>
-
-  <ToastContainer />
-  </>
-  
-);
+  );
 
   <div>
     {
@@ -123,10 +87,6 @@ return (
       
     }
   </div>
- 
-
-}
-
   
-
+ }
 export default App;
