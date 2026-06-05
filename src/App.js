@@ -29,15 +29,26 @@ function App() {
     return (
   <>
   <Routes>
+     <Route path="/register" element={<Register />} />
     <Route path="/login" element = {
-      <Login
-      setIsLoggedIn={setIsLoggedIn}
-      />
-    }
-    />
-<Route
-    path="/Dashboard"
-    element= {
+      isLoggedIn ? 
+        <Dashboard setIsLoggedIn={setIsLoggedIn} /> : 
+        showSignup ? 
+          <div>
+           <Register />
+<p style={{ textAlign: "center" }}>
+            Already have an account?
+ <button onClick={() => setShowSignup(false)}>Login</button> </p> 
+ </div> : 
+      <div>
+          <Login setIsLoggedIn= {setIsLoggedIn} />
+          <p style={{textAlign: "center" }}>
+            Don't have an account?
+            <button onClick={() => setShowSignup(true)}> Register </button>
+          </p>
+          </div>
+    } />
+<Route path="/Dashboard" element= {
       <ProtectedRoute>
                 <Dashboard
         setIsLoggedIn= {setIsLoggedIn}
@@ -45,41 +56,12 @@ function App() {
         </ProtectedRoute>
     }
     />
-    
-    <Route
-    path="/register"
-    element={<Register />}
-    />
-    <Route 
-    path="*"
-     element={<Navigate to="/login" />}
-    />
+    <Route  path="*" element={<Navigate to="/login" />} />
   </Routes>
-    <div>
-    {
-      isLoggedIn ? (
-        <Dashboard setIsLoggedIn={setIsLoggedIn} />
-      ) : (
-        showSignup ? (
-          <div>
-           <Register />
-<p style={{ textAlign: "center" }}>
-            Already have an account?
- <button onClick={() =>
-            setShowSignup(false)}>Login</button>     </p> </div>
-            ) : ( 
-              <div>
-          <Login setIsLoggedIn= {setIsLoggedIn} />
-          <p style={{textAlign: "center" }}>
-            Don't have an account?
-            <button onClick={() => setShowSignup(true)}>
-              Register
-            </button>
-          </p>
-          </div>
-            )
-      )}
-       </div>
+    
+            
+      
+       
        </>
       );
   }
