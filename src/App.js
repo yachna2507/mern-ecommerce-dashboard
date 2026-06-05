@@ -25,8 +25,9 @@ function App() {
   useEffect(() => {
     fetchOrders();
     }, []);
+    
     return (
-  
+  <>
   <Routes>
     <Route path="/login" element = {
       <Login
@@ -54,27 +55,21 @@ function App() {
      element={<Navigate to="/login" />}
     />
   </Routes>
-  );
-
-  <div>
+    <div>
     {
       isLoggedIn ? (
         <Dashboard setIsLoggedIn={setIsLoggedIn} />
       ) : (
         showSignup ? (
           <div>
-
-          <Register />
-          <p style={{ textAlign: "center" }}>
+           <Register />
+<p style={{ textAlign: "center" }}>
             Already have an account?
-
-            <button onClick={() =>
-            setShowSignup(false)}>Login</button>     </p> 
-            </div>
-        ) : ( 
-          <div>
-
-          <Login setIsLoggedIn={setIsLoggedIn} />
+ <button onClick={() =>
+            setShowSignup(false)}>Login</button>     </p> </div>
+            ) : ( 
+              <div>
+          <Login setIsLoggedIn= {setIsLoggedIn} />
           <p style={{textAlign: "center" }}>
             Don't have an account?
             <button onClick={() => setShowSignup(true)}>
@@ -82,11 +77,11 @@ function App() {
             </button>
           </p>
           </div>
-        )
-        )
-      
-    }
-  </div>
-  
- }
+            )
+      )}
+       </div>
+       </>
+      );
+  }
+
 export default App;
