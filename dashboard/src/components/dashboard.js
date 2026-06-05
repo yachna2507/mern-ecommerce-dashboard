@@ -61,9 +61,8 @@ console.log(response.data);
       };
     try {
       await 
-       console.log("ENV URL:", process.env.REACT_APP_API_URL)
-     console.log("FULL URL:", `${process.env.REACT_APP_API_URL}/orders`)
-      axios.post(`${process.env.REACT_APP_API_URL}/orders`, orderData);
+       
+      axios.post(`https://mern-ecommerce-dashboard-1.onrender.com/orders`, orderData);
       fetchOrders();
       toast.success("Order Added Successfully");
       setCustomerName();
@@ -123,7 +122,7 @@ const updateOrder = async (id) => {
 
   await 
   
-axios.put(`${process.env.REACT_APP_API_URL}//orders/${editId}`, orderData);
+axios.put(`https://mern-ecommerce-dashboard-1.onrender.com/orders/${editId}`, orderData);
   fetchOrders();
   toast.success("Order Updated");
   } catch (error) {
@@ -152,7 +151,7 @@ axios.put(`${process.env.REACT_APP_API_URL}//orders/${editId}`, orderData);
 
 
 useEffect(() => {
-axios.get(`${process.env.REACT_APP_API_URL}/orders?page=${page}&limit=5`)
+axios.get(`https://mern-ecommerce-dashboard-1.onrender.com/orders?page=${page}&limit=5`)
 .then((res) => {
 
   setOrders(res.data.orders || []);
