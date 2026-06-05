@@ -11,7 +11,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("http://localhost:5000/auth/register",
+            const res = await axios.post("https://mern-ecommerce-dashboard-1.onrender.com/auth/register",
                 {
                     email,
                     password,
