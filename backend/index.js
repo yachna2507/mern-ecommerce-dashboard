@@ -20,7 +20,9 @@ app.get("/dashboard", protect, (req, res) => {
         });
 
         //DB connect
-        mongoose.connect(process.env.MONGO_URI)
+        mongoose.connect(process.env.MONGO_URI, {
+	        dbName: 'authDB'
+        })
         .then(() => console.log("MongoDB conected"))
         .catch((err) => console.log(err));
         app.post("/orders", async (req, res) =>
