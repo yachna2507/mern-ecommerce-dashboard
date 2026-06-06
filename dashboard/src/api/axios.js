@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./api/axios";
 
 const api = axios.create({
     baseURL: "https://mern-ecommerce-dashboard-1.onrender.com"
