@@ -1,6 +1,6 @@
 app.post("/orders", async (req, res) =>
 { 
-    console.log(req.body);
+    console.log("Received:", req.body);
     try {
         const newOrder = new Order({
             customerName: req.body.customerName,
@@ -11,11 +11,12 @@ app.post("/orders", async (req, res) =>
         });
 
         const savedOrder = await newOrder.save();
+        console.log("Saved to DB with ID:" , savedOrder._id);
 
         res.status(201).json(savedOrder);
     } catch (err) {
-        console.log(err);
-        res.send(err);
+        console.log("Error saving:", err);
+        res.send(400).json({ error:, err.message });
     }
 });
 //-- Read---
