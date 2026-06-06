@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -11,7 +11,7 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const res = await axios.post("https://mern-ecommerce-dashboard-1.onrender.com/auth/register",
+            const res = await api.post("/auth/register",
                 {
                     email,
                     password,

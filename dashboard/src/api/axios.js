@@ -2,9 +2,18 @@ import axios from 'axios';
 const api = axios.create({
     baseURL: "https://mern-ecommerce-dashboard-1.onrender.com"
 });
-api.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
-    if(token) config.headers.Authorization = token;
-    return config;
-});
+
+api.interceptors.request.use(
+    (config) => {
+        const token =
+        localStorage.getItem("token");
+
+        if(token) {
+            config.headers.authorization =
+            token;
+        }
+        return config;
+    }
+);
+
 export default api;

@@ -1,7 +1,7 @@
 import React , { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {jwtDecode } from "jwt-decode";
-import axios from "../api/axios";
+import api from "../api/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -33,7 +33,7 @@ if (token) {
 
        //-- fetch order
 const fetchOrders = async () => {
-const response = await axios.get("/orders");
+const response = await api.get("/orders");
 console.log(response.data);
         setOrders(response.data.orders || []);
         
@@ -61,7 +61,8 @@ console.log(response.data);
       };
     try {
       await 
-      axios.post("http://localhost:5000/orders", orderData);
+       
+      api.post(`/orders`, orderData);
       fetchOrders();
       toast.success("Order Added Successfully");
       setCustomerName();
@@ -82,7 +83,7 @@ if (!confirmDelete) {
 
 }
   await
-    axios.delete (`http://localhost:5000/orders/${id}`);
+    api.delete (`/orders/${id}`);
 
   fetchOrders();
   toast.error("Order Deleted");
@@ -121,7 +122,7 @@ const updateOrder = async (id) => {
 
   await 
   
-axios.put(`http://localhost:5000/orders/${editId}`, orderData);
+api.put(`/orders/${editId}`, orderData);
   fetchOrders();
   toast.success("Order Updated");
   } catch (error) {
@@ -150,7 +151,7 @@ axios.put(`http://localhost:5000/orders/${editId}`, orderData);
 
 
 useEffect(() => {
-axios.get(`http://localhost:5000/orders?page=${page}&limit=5`)
+api.get(`/orders?page=${page}&limit=5`)
 .then((res) => {
 
   setOrders(res.data.orders || []);
