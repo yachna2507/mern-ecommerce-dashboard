@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "../api/axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ function Login() {
         e.preventDefault();
         try {
             const response = await
-            axios.post("https://mern-ecommerce-dashboard-1.onrender.com/auth/login",
+            api.post("/auth/login",
                 {
                     email,
                     password
