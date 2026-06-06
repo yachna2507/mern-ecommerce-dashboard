@@ -3,7 +3,7 @@ import AnalyticsChart from "./components/AnalyticsChart";
 import PieChart from "./components/PieChart";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import axios from "./api/axios";
+import api from "./api/axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -36,7 +36,7 @@ if (token) {
 
        //-- fetch order
 const fetchOrders = async () => {
-const response = await axios.get("/orders");
+const response = await api.get("/orders");
 console.log(response.data);
         setOrders(response.data.orders || []);
         
@@ -64,7 +64,7 @@ console.log(response.data);
       };
     try {
       await 
-      axios.post("https://mern-ecommerce-dashboard-1.onrender.com", orderData);
+      api.post(orderData);
       fetchOrders();
       toast.success("Order Added Successfully");
       setCustomerName();
@@ -85,7 +85,7 @@ if (!confirmDelete) {
 
 }
   await
-    axios.delete (`https://mern-ecommerce-dashboard-1.onrender.com/orders/${id}`);
+    api.delete (`/orders/${id}`);
 
   fetchOrders();
   toast.error("Order Deleted");
@@ -124,7 +124,7 @@ const updateOrder = async (id) => {
 
   await 
   
-axios.put(`https://mern-ecommerce-dashboard-1.onrender.com/orders/${editId}`, orderData);
+api.put(`/orders/${editId}`, orderData);
   fetchOrders();
   toast.success("Order Updated");
   } catch (error) {
@@ -153,7 +153,7 @@ axios.put(`https://mern-ecommerce-dashboard-1.onrender.com/orders/${editId}`, or
 
 
 useEffect(() => {
-axios.get(`https://mern-ecommerce-dashboard-1.onrender.com/orders?page=${page}&limit=5`)
+api.get(`/orders?page=${page}&limit=5`)
 .then((res) => {
 
   setOrders(res.data.orders || []);
@@ -170,7 +170,7 @@ orders.filter((order) =>
 ) ;  
 const updateStatus = async (id, newStatus) => {
   try {
-    await axios.put(`https://mern-ecommerce-dashboard-1.onrender.com/orders/${id}`,
+    await api.put(`/orders/${id}`,
       {
         status: newStatus,
       }
