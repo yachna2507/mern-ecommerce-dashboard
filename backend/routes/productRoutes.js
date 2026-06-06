@@ -6,12 +6,13 @@ app.post("/orders", async (req, res) =>
             customerName: req.body.customerName,
             product_name: req.body.product_name,
             price: req.body.price,
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            user: req.user.id
         });
 
-        await newOrder.save();
+        const savedOrder = await newOrder.save();
 
-        res.send("Order added successfully");
+        res.status(201).json(savedOrder);
     } catch (err) {
         console.log(err);
         res.send(err);
