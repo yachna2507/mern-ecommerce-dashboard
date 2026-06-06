@@ -16,7 +16,7 @@ app.post("/orders", async (req, res) =>
         res.status(201).json(savedOrder);
     } catch (err) {
         console.log("Error saving:", err);
-        res.send(400).json({ error:, err.message });
+        res.status(400).json({ error:, err.message });
     }
 });
 //-- Read---
