@@ -64,7 +64,7 @@ console.log(response.data);
       };
     try {
       await 
-      api.post(orderData);
+      api.post('/orders', orderData);
       fetchOrders();
       toast.success("Order Added Successfully");
       setCustomerName();
